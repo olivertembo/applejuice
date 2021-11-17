@@ -1,36 +1,18 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
-import type {Node} from 'react';
-import {
-  SafeAreaView,
-  useColorScheme,
-} from 'react-native';
+import {ThemeProvider} from './src/context/ThemeContext';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import { Text, View } from 'react-native';
 
-import {
-  Colors,
-} from 'react-native/Libraries/NewAppScreen';
-
-
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
+export default function App(): React.ReactElement | null {
   return (
-    <SafeAreaView style={backgroundStyle}>
-     
-      
-    </SafeAreaView>
+    <ThemeProvider>
+      <SafeAreaProvider>
+        <View>
+          <Text>
+            Hello Apple Juice
+          </Text>
+        </View>
+      </SafeAreaProvider>
+    </ThemeProvider>
   );
-};
-
-export default App;
+}
